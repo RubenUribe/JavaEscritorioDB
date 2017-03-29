@@ -1,5 +1,6 @@
 package co.edu.iesa.sw.formularios;
 
+import java.awt.*;
 import javax.swing.*;
 
 /**
@@ -15,5 +16,9 @@ public class frmPrincipal extends JFrame{
         setLayout(null); //Definir distribucion de los elementos en la ventana
         setDefaultCloseOperation(this.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);//Centrar ventana en la pantalla
+        
+        //Color de la ventana
+        //getContentPane().setBackground(new Color(255, 255, 255));
+        getContentPane().setBackground(Color.WHITE);
     }
 }
