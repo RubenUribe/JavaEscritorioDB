@@ -73,17 +73,7 @@ public class FrmLogin extends JFrame implements ActionListener{
         btnCancelar.setToolTipText("Cancelar el ingreso al sistema");
         btnIngresar.setToolTipText("Ingresar al sistema");
         
-        //Quitar borde
-        //txtUsuario.setBorder(null);
-        //passContrasena.setBorder(null);
-        
-        //Alineación del texto del boton
-        //btnCancelar.setHorizontalTextPosition(SwingConstants.HORIZONTAL);
-        //btnCancelar.setVerticalTextPosition(SwingConstants.BOTTOM);
-        
-        //btnIngresar.setHorizontalTextPosition(SwingConstants.HORIZONTAL);
-        //btnIngresar.setVerticalTextPosition(SwingConstants.BOTTOM);
-        
+             
         //Adicionar objetos al marco
         add(lblLogo);
         add(lblUsuario);
