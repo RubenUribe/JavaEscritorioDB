@@ -80,6 +80,7 @@ public class frmPrincipal extends JFrame implements ActionListener{
         btnInformacion.setBounds(480, 130, 70, 70);
         btnSalir.setBounds(620, 130, 70, 70);
         
+        btnRegistrar.addActionListener(this);
         btnLoing.addActionListener(this);
         btnSalir.addActionListener(this);
     }
@@ -92,6 +93,12 @@ public class frmPrincipal extends JFrame implements ActionListener{
          if (e.getSource()==btnSalir) {
              //finaliza la aplicación
              System.exit(0);
+         }
+         
+         if (e.getSource()==btnRegistrar) {
+             dispose();
+             FrmRegistro miRegistro = new FrmRegistro();
+             miRegistro.setVisible(true);
          }
     }
 }

@@ -12,9 +12,9 @@ import java.util.logging.Logger;
 public class DBConexion {
     private final String db = "iesa";//Nombre de la base de datos
     private final String puerto = "3306";//puerto de comunicación con MySQL
-    private final String user = "";//Nombre del usuario de la base de datos
-    private final String password = "";//Contraseña para ingreasar la base de datos
-    private final String url = "jdbc:mysql://localhost"+puerto+db;
+    private final String user = "root";//Nombre del usuario de la base de datos
+    private final String password = "12345678";//Contraseña para ingreasar la base de datos
+    private final String url = "jdbc:mysql://localhost:"+puerto+"/"+db;
     private Connection connection = null;
     
     public DBConexion(){
@@ -23,6 +23,7 @@ public class DBConexion {
             this.connection = (Connection) DriverManager.getConnection(url, user,password);
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(DBConexion.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Exception "+ex.getMessage()+" causa :"+ex.getCause());
         }
         
     }

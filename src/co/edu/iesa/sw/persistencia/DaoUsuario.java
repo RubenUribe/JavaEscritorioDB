@@ -5,8 +5,7 @@ import co.edu.iesa.sw.entidades.Usuario;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 
 /**
@@ -43,5 +42,28 @@ public class DaoUsuario {
             return null;
         }
  
+    }
+    public static Respuesta Crear (Usuario usuario){
+        DBConexion con = new DBConexion();
+ 
+    try{
+    String sql = "INSERT INTO usuarios(email, nombre, apellido, password, rolId) VALUES(?,?,?,?,?)"; 
+        PreparedStatement consulta = con.getConnection().prepareStatement(sql);     
+         consulta.setString(1,usuario.getEmail());
+         consulta.setString(2,usuario.getNombre());
+         consulta.setString(3,usuario.getApellido());
+         consulta.setString(4,usuario.getPassword());
+         consulta.setInt(5,usuario.getRolId());
+         consulta.executeUpdate();
+         con.closeConnection();
+         return new Respuesta (true); 
+    } //Fin try
+    
+      catch(SQLException ex){
+          con.closeConnection();
+          return new Respuesta (ex.getMessage());
+          
+    } //Fin catch
+    
     }
 }
