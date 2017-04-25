@@ -23,7 +23,8 @@ public class FrmRegistro extends JFrame implements ActionListener{
     private final JTextField txtEmail;
     private final JTextField txtNombre;
     private final JTextField txtApellido;
-    private final JTextField txtRolId;
+    private final String[] roles = { "Vendedor", "Cajero", "Supervisor", "Administrador", "Gerente" };
+    private final JComboBox cmbRolId;
     private final JPasswordField passContrasena;
     private final JButton btnGuardar;
     private final JButton btnCancelar;
@@ -61,7 +62,9 @@ public class FrmRegistro extends JFrame implements ActionListener{
         lblContrasena = new JLabel("Contraseña");
         passContrasena = new JPasswordField();
         lblRolId = new JLabel("RolId");
-        txtRolId = new JTextField();
+        cmbRolId = new JComboBox(roles);
+        cmbRolId.setSelectedIndex(4);
+        cmbRolId.addActionListener(this);
         btnCancelar = new JButton("",iconCancelar);
         btnGuardar = new JButton("", iconIniciar);
         
@@ -98,7 +101,7 @@ public class FrmRegistro extends JFrame implements ActionListener{
         add(lblContrasena);
         add(passContrasena);
         add(lblRolId);
-        add(txtRolId);
+        add(cmbRolId);
         add(btnCancelar);
         add(btnGuardar);
         
@@ -117,7 +120,7 @@ public class FrmRegistro extends JFrame implements ActionListener{
         passContrasena.setBounds(40, 360, 180, 25);
         
         lblRolId.setBounds(40, 390, 80, 25);
-        txtRolId.setBounds(40, 410, 180, 25);
+        cmbRolId.setBounds(40, 410, 180, 25);
         
         btnCancelar.setBounds(40, 450, 85, 30);
         btnGuardar.setBounds(135, 450, 85, 30);
@@ -169,18 +172,21 @@ public class FrmRegistro extends JFrame implements ActionListener{
              }
              
              //Si campo rolId vacio
-             if(txtRolId.getText().isEmpty()){
+             /*
+             if(cmbRolId.getText().isEmpty()){
                  JOptionPane.showMessageDialog(null,"Debe ingresar un rol","Mensaje",JOptionPane.INFORMATION_MESSAGE);
-                 txtRolId.requestFocusInWindow();
+                 cmbRolId.requestFocusInWindow();
                  return;
-             }
+             }*/
   
              Usuario miUsuario = new Usuario(
                      txtEmail.getText(),
                      txtNombre.getText(),
                      txtApellido.getText(),
                      password,
-                     Integer.parseInt(txtRolId.getText()));
+                     cmbRolId.getSelectedIndex());
+             
+             //Integer.parseInt(cmbRolId.getText())
              
              Respuesta respuesta = DaoUsuario.Crear(miUsuario);
              
